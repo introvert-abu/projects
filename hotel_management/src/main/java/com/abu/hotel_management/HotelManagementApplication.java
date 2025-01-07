@@ -1,13 +1,13 @@
-package com.abu.hotel_booking;
+package com.abu.hotel_management;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HotelBookingApplication {
+public class HotelManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HotelBookingApplication.class, args);
+		SpringApplication.run(HotelManagementApplication.class, args);
 	}
 
 }
