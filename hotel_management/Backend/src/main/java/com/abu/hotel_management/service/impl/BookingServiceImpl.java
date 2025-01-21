@@ -50,6 +50,7 @@ public class BookingServiceImpl implements BookingService {
 
             bookingRequest.setRoom(room);
             bookingRequest.setUser(user);
+            bookingRequest.setTotalNumberOfGuests();
             String confirmationCode = Utils.generateConfirmationCode(10);
             bookingRequest.setBookingConfirmationCode(confirmationCode);
             Booking savedBooking = bookingRepository.save(bookingRequest);
@@ -62,6 +63,9 @@ public class BookingServiceImpl implements BookingService {
         } catch (CustomException e) {
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
+        } catch (Exception e) {
+            response.setStatusCode(500);
+            response.setMessage("Error booking room " + e.getMessage());
         }
 
         return response;

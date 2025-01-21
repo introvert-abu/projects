@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @ToString(exclude = {"room", "user"})
 @Entity
-@Table(name = "bookingss")
+@Table(name = "bookings")
 public class Booking {
 
     @Id
@@ -50,17 +50,7 @@ public class Booking {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    public void calculateTotalNumberOfGuests() {
-        this.totalNumberOfGuests = this.numberOfAdults + this.numberOfChildren;
-    }
-
-    public void setNumberOfAdults(int numberOfAdults) {
-        this.numberOfAdults = numberOfAdults;
-        this.calculateTotalNumberOfGuests();
-    }
-
-    public void setNumberOfChildren(int numberOfChildren) {
-        this.numberOfChildren = numberOfChildren;
-        this.calculateTotalNumberOfGuests();
+    public void setTotalNumberOfGuests() {
+        this.totalNumberOfGuests = numberOfAdults + numberOfChildren;
     }
 }

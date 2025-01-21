@@ -106,6 +106,7 @@ public class RoomServiceImpl implements RoomService {
                 room.setImageName(photo.getName());
                 room.setImageType(photo.getContentType());
             }
+
             Room updatedRoom = roomRepository.save(room);
             RoomDTO roomDTO = Utils.mapRoomEntityToRoomDTO(updatedRoom);
 
