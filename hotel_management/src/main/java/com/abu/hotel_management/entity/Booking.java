@@ -1,0 +1,67 @@
+package com.abu.hotel_management.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.ToString;
+
+import java.time.LocalDate;
+
+@Data
+@ToString(exclude = {"room", "user"})
+@Entity
+@Table(name = "bookings")
+public class Booking {
+
+    @Id
+    @SequenceGenerator(
+            name = "booking_seq",
+            sequenceName = "booking_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "booking_seq"
+    )
+    private Long id;
+
+    @NotNull(message = "Check in date is required")
+    private LocalDate checkInDate;
+
+    @Future(message = "check out date must be greater than the check in date")
+    private LocalDate checkOutDate;
+
+    @Min(value = 1, message = "Adults must not be less than 1")
+    private int numberOfAdults;
+
+    @Min(value = 0, message = "Number of children cannot be negative")
+    private int numberOfChildren;
+
+    private int totalNumberOfGuests;
+
+    private String bookingConfirmationCode;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_id")
+    private Room room;
+
+    public void calculateTotalNumberOfGuests() {
+        this.totalNumberOfGuests = this.numberOfAdults + this.numberOfChildren;
+    }
+
+    public void setNumberOfAdults(int numberOfAdults) {
+        this.numberOfAdults = numberOfAdults;
+        this.calculateTotalNumberOfGuests();
+    }
+
+    public void setNumberOfChildren(int numberOfChildren) {
+        this.numberOfChildren = numberOfChildren;
+        this.calculateTotalNumberOfGuests();
+    }
+}
