@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Service
 public class Utils {
 
-    private static final String ALPHANUMERIC_STRING = "aBCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String ALPHANUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     private static final SecureRandom secureRandom = new SecureRandom();
 

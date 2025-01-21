@@ -36,12 +36,10 @@ public class UserServiceImpl implements UserService {
         Response response = new Response();
 
         try {
-            if (user.getRole() == null || user.getRole().isBlank()) {
-                user.setRole("USER");
-            }
             if (userRepository.existsByEmail(user.getEmail())) {
                 throw new CustomException(user.getEmail() + " already exists");
             }
+            user.setRole("USER");
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
             UserDTO userDTO = Utils.mapUserEntityToUserDTO(savedUser);

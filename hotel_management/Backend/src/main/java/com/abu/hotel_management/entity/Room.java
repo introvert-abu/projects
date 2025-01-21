@@ -24,6 +24,7 @@ public class Room {
             strategy = GenerationType.SEQUENCE,
             generator = "room_seq"
     )
+    @Column(name = "room_id")
     private Long id;
 
     private String roomType;

@@ -41,14 +41,12 @@ public class UserController {
     }
 
     @GetMapping("/get-user-bookings/{userId}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> getUserBookingHistory(@PathVariable("userId") String userId) {
         Response response = userService.getUserBookingHistory(userId);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
     @DeleteMapping("/delete/{userId}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Response> deleteUser(@PathVariable("userId") String userId) {
         Response response = userService.deleteUserById(userId);
         return ResponseEntity.status(response.getStatusCode()).body(response);

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @ToString(exclude = {"room", "user"})
 @Entity
-@Table(name = "bookings")
+@Table(name = "bookingss")
 public class Booking {
 
     @Id
@@ -25,6 +25,7 @@ public class Booking {
             strategy = GenerationType.SEQUENCE,
             generator = "booking_seq"
     )
+    @Column(name = "booking_id")
     private Long id;
 
     @NotNull(message = "Check in date is required")
@@ -33,10 +34,8 @@ public class Booking {
     @Future(message = "check out date must be greater than the check in date")
     private LocalDate checkOutDate;
 
-    @Min(value = 1, message = "Adults must not be less than 1")
     private int numberOfAdults;
 
-    @Min(value = 0, message = "Number of children cannot be negative")
     private int numberOfChildren;
 
     private int totalNumberOfGuests;

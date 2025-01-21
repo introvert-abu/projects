@@ -52,17 +52,16 @@ public class BookingServiceImpl implements BookingService {
             bookingRequest.setUser(user);
             String confirmationCode = Utils.generateConfirmationCode(10);
             bookingRequest.setBookingConfirmationCode(confirmationCode);
-            bookingRepository.save(bookingRequest);
+            Booking savedBooking = bookingRepository.save(bookingRequest);
             response.setMessage("Successful");
             response.setStatusCode(200);
             response.setBookingConfirmationCode(confirmationCode);
+            BookingDTO bookingDTO = Utils.mapBookingEntityToBookingDTOPlusBookedRoom(savedBooking, true);
+            response.setBooking(bookingDTO);
 
         } catch (CustomException e) {
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
-        } catch (Exception e) {
-            response.setStatusCode(500);
-            response.setMessage("Error booking room " + e.getMessage());
         }
 
         return response;

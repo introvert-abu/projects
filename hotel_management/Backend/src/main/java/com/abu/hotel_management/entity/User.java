@@ -30,6 +30,7 @@ public class User implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "users_seq"
     )
+    @Column(name = "user_id")
     private Long id;
 
     @NotBlank(message = "email is required")
