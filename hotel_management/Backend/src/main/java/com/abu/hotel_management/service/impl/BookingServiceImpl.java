@@ -50,7 +50,7 @@ public class BookingServiceImpl implements BookingService {
 
             bookingRequest.setRoom(room);
             bookingRequest.setUser(user);
-            bookingRequest.setTotalNumberOfGuests();
+            bookingRequest.setTotalNumOfGuest();
             String confirmationCode = Utils.generateConfirmationCode(10);
             bookingRequest.setBookingConfirmationCode(confirmationCode);
             Booking savedBooking = bookingRepository.save(bookingRequest);

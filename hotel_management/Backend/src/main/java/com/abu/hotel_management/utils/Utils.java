@@ -75,9 +75,9 @@ public class Utils {
                 .id(booking.getId())
                 .checkInDate(booking.getCheckInDate())
                 .checkOutDate(booking.getCheckOutDate())
-                .numberOfAdults(booking.getNumberOfAdults())
-                .numberOfChildren(booking.getNumberOfChildren())
-                .totalNumberOfGuests(booking.getTotalNumberOfGuests())
+                .numOfAdults(booking.getNumOfAdults())
+                .numOfChildren(booking.getNumOfChildren())
+                .totalNumOfGuest(booking.getTotalNumOfGuest())
                 .bookingConfirmationCode(booking.getBookingConfirmationCode())
                 .build();
     }
@@ -103,9 +103,9 @@ public class Utils {
                 .id(booking.getId())
                 .checkInDate(booking.getCheckInDate())
                 .checkOutDate(booking.getCheckOutDate())
-                .numberOfAdults(booking.getNumberOfAdults())
-                .numberOfChildren(booking.getNumberOfChildren())
-                .totalNumberOfGuests(booking.getTotalNumberOfGuests())
+                .numOfAdults(booking.getNumOfAdults())
+                .numOfChildren(booking.getNumOfChildren())
+                .totalNumOfGuest(booking.getTotalNumOfGuest())
                 .bookingConfirmationCode(booking.getBookingConfirmationCode())
                 .build();
 

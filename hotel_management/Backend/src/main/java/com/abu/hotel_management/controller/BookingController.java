@@ -4,10 +4,10 @@ import com.abu.hotel_management.dto.Response;
 import com.abu.hotel_management.entity.Booking;
 import com.abu.hotel_management.service.design.BookingService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/bookings")
 public class BookingController {
 

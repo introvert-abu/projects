@@ -2,7 +2,6 @@ package com.abu.hotel_management.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
@@ -34,11 +33,11 @@ public class Booking {
     @Future(message = "check out date must be greater than the check in date")
     private LocalDate checkOutDate;
 
-    private int numberOfAdults;
+    private int numOfAdults;
 
-    private int numberOfChildren;
+    private int numOfChildren;
 
-    private int totalNumberOfGuests;
+    private int totalNumOfGuest;
 
     private String bookingConfirmationCode;
 
@@ -50,7 +49,7 @@ public class Booking {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    public void setTotalNumberOfGuests() {
-        this.totalNumberOfGuests = numberOfAdults + numberOfChildren;
+    public void setTotalNumOfGuest() {
+        this.totalNumOfGuest = numOfAdults + numOfChildren;
     }
 }
